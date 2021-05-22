@@ -1,0 +1,919 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="craigphicks">
+      
+      
+      
+        <meta name="author" content="Craig Hicks">
+      
+      
+        <link rel="canonical" href="https://github.com/craigphicks/ubiquiti/">
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.5">
+    
+    
+      
+        <title>Ubiquiti - craigphicks</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.bde7dde4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ef6f36e2.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#4051b5">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+        
+<script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-XXXXXXXX-X","auto"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){var e;this.value&&(e=document.location.pathname,ga("send","pageview",e+"?q="+this.value))}),"undefined"!=typeof location$&&location$.subscribe(function(e){ga("send","pageview",e.pathname)})})</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#setting-up-ubiquiti-wifi-uap-ac-lite-on-linux-ubuntu-1604" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="craigphicks" class="md-header__button md-logo" aria-label="craigphicks" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            craigphicks
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Ubiquiti
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/craigphicks/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    craigphicks
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="craigphicks" class="md-nav__button md-logo" aria-label="craigphicks" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    craigphicks
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/craigphicks/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    craigphicks
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../express-webpack-typescript/" class="md-nav__link">
+        Express webpack typescript
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../set-mkdocs-material/" class="md-nav__link">
+        Setting up mkdocs-material with latest github version
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Ubiquiti
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Ubiquiti
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#setting-up-ubiquiti-wifi-uap-ac-lite-on-linux-ubuntu-1604" class="md-nav__link">
+    Setting up Ubiquiti Wifi (UAP-AC-Lite) on Linux Ubuntu 16.04
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    Summary
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#caution-post-setup-note-on-possible-insecurity" class="md-nav__link">
+    Caution: Post Setup note on possible insecurity
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getting-to-the-correct-url" class="md-nav__link">
+    Getting to the correct URL
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    Installation
+  </a>
+  
+    <nav class="md-nav" aria-label="Installation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installing-mongodb" class="md-nav__link">
+    Installing MongoDB
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#installing-the-ubiquiti-software" class="md-nav__link">
+    Installing the Ubiquiti software
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#log-files" class="md-nav__link">
+    Log files
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#make-wifi-unit-and-unifi-talk-to-each-other" class="md-nav__link">
+    Make Wifi unit and Unifi talk to each other
+  </a>
+  
+    <nav class="md-nav" aria-label="Make Wifi unit and Unifi talk to each other">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#find-local-lan-ip-addresses-of-wifi-and-pc" class="md-nav__link">
+    find local lan ip addresses of wifi and PC
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ssh-into-wifi-unit-set-pc-address" class="md-nav__link">
+    ssh into wifi unit, set PC address
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#open-unifi-program-in-pc-browser-to-return-handshake-with-wifi-unit" class="md-nav__link">
+    open unifi program in PC browser to return handshake with Wifi unit
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#again-ssh-into-wifi-unit-and-set-inform" class="md-nav__link">
+    again ssh into wifi unit and set-inform
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#setting-up-ubiquiti-wifi-uap-ac-lite-on-linux-ubuntu-1604" class="md-nav__link">
+    Setting up Ubiquiti Wifi (UAP-AC-Lite) on Linux Ubuntu 16.04
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    Summary
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#caution-post-setup-note-on-possible-insecurity" class="md-nav__link">
+    Caution: Post Setup note on possible insecurity
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getting-to-the-correct-url" class="md-nav__link">
+    Getting to the correct URL
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    Installation
+  </a>
+  
+    <nav class="md-nav" aria-label="Installation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installing-mongodb" class="md-nav__link">
+    Installing MongoDB
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#installing-the-ubiquiti-software" class="md-nav__link">
+    Installing the Ubiquiti software
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#log-files" class="md-nav__link">
+    Log files
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#make-wifi-unit-and-unifi-talk-to-each-other" class="md-nav__link">
+    Make Wifi unit and Unifi talk to each other
+  </a>
+  
+    <nav class="md-nav" aria-label="Make Wifi unit and Unifi talk to each other">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#find-local-lan-ip-addresses-of-wifi-and-pc" class="md-nav__link">
+    find local lan ip addresses of wifi and PC
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ssh-into-wifi-unit-set-pc-address" class="md-nav__link">
+    ssh into wifi unit, set PC address
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#open-unifi-program-in-pc-browser-to-return-handshake-with-wifi-unit" class="md-nav__link">
+    open unifi program in PC browser to return handshake with Wifi unit
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#again-ssh-into-wifi-unit-and-set-inform" class="md-nav__link">
+    again ssh into wifi unit and set-inform
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/craigphicks/edit/master/docs/ubiquiti.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <!--
+---
+title: Setting up Ubiquiti Wifi (UAP-AC-Lite) on Linux Ubuntu 16.04 
+tags:
+  - Wifi
+  - Linux
+  - Ubuntu
+  - Ubiquiti
+  - UAP-AC-Lite
+categories:
+  - Wifi
+toc: true
+comments: true
+date: 2018-06-10 00:00:00
+layout: true
+---
+-->
+
+<h2 id="setting-up-ubiquiti-wifi-uap-ac-lite-on-linux-ubuntu-1604">Setting up Ubiquiti Wifi (UAP-AC-Lite) on Linux Ubuntu 16.04<a class="headerlink" href="#setting-up-ubiquiti-wifi-uap-ac-lite-on-linux-ubuntu-1604" title="Permanent link">&para;</a></h2>
+<h1 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h1>
+<p>installing the Unifi controller on Ubuntu 16.04.
+It will be used to control the Ubiquiti wifi model: UAP-AC-LITE</p>
+<!-- more -->
+
+<h1 id="caution-post-setup-note-on-possible-insecurity"><em>Caution</em>: Post Setup note on possible insecurity<a class="headerlink" href="#caution-post-setup-note-on-possible-insecurity" title="Permanent link">&para;</a></h1>
+<p>NOTE: After logging out of <em>unifi</em> at the browser level, I later found a nest of <em>unifi</em> processes still running, and blocking other processes from using port 8080.  I also found <a href="https://community.ubnt.com/t5/UniFi-Feature-Requests/Linux-Unifi-Controller-default-Debian-setup-is-grossly-insecure/idi-p/1752863/page/2">this post</a> claiming <em>unifi</em> setup on linux is very insecure.  Indeed, some of hte <em>unifi</em> processes are running as <em>root</em>.</p>
+<p>Show <em>unifi</em> processes</p>
+<div class="codehilite"><pre><span></span><code>ps -aux | grep unifi
+root     28116  0.0  0.0  17072    12 ?        Ss   Jun10   0:00 unifi -cwd /usr/lib/unifi -home /us
+root     28117  0.0  0.0  17072    20 ?        S    Jun10   0:00 unifi -cwd /usr/lib/unifi -home /us
+unifi    28119  0.0  0.6 3343864 53068 ?       Sl   Jun10   1:12 unifi -cwd /usr/lib/unifi -home /us
+unifi    28135  0.1  5.7 4442860 461816 ?      Sl   Jun10   3:16 /usr/lib/jvm/java-8-openjdk-amd64/j
+unifi    28968  0.1  0.9 1045124 78456 ?       Sl   Jun10   5:08 /usr/bin/mongod --dbpath /usr/lib/u
+</code></pre></div>
+
+<p>Report the status of the <em>systemd</em> <em>unifi</em> service</p>
+<div class="codehilite"><pre><span></span><code>sudo systemctl status unifi
+● unifi.service - unifi
+   Loaded: loaded (/lib/systemd/system/unifi.service; enabled; vendor preset: enabled)
+   Active: active (running) since Sun 2018-06-10 19:01:40 PDT; 2 days ago
+  Process: 27877 ExecStop=/usr/lib/unifi/bin/unifi.init stop (code=exited, status=0/SUCCESS)
+  Process: 28057 ExecStart=/usr/lib/unifi/bin/unifi.init start (code=exited, status=0/SUCCESS)
+ Main PID: 28116 (jsvc)
+    Tasks: 910
+   Memory: 653.6M
+      CPU: 9min 38.339s
+   CGroup: /system.slice/unifi.service
+           ├─28116 unifi -cwd /usr/lib/unifi -home /usr/lib/jvm/java-8-openjdk-amd64 -cp /usr/share/           ├─28117 unifi -cwd /usr/lib/unifi -home /usr/lib/jvm/java-8-openjdk-amd64 -cp /usr/share/           ├─28119 unifi -cwd /usr/lib/unifi -home /usr/lib/jvm/java-8-openjdk-amd64 -cp /usr/share/           ├─28135 /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java -Xmx1024M -XX:ErrorFile=/usr/lib/u           └─28968 /usr/bin/mongod --dbpath /usr/lib/unifi/data/db --port 27117 --unixSocketPrefix /
+Jun 10 19:01:39 user-desktop systemd[1]: Starting unifi...
+Jun 10 19:01:39 user-desktop unifi.init[28057]:  * Starting Ubiquiti UniFi Controller unifi
+Jun 10 19:01:40 user-desktop unifi.init[28057]:    ...done.
+Jun 10 19:01:40 user-desktop systemd[1]: Started unifi.
+</code></pre></div>
+
+<p>Stop the <em>unifi</em> service:</p>
+<div class="codehilite"><pre><span></span><code>sudo systemctl stop unifi
+ps -aux | grep unifi
+&lt;empty result&gt;
+</code></pre></div>
+
+<p>So stopping the <em>unifi</em> service has temporarily solved the problem.  Of course the <em>unifi</em> browser program will not run, but that doesn't affect the operation of the wifi once it has been set up.</p>
+<h1 id="getting-to-the-correct-url">Getting to the correct URL<a class="headerlink" href="#getting-to-the-correct-url" title="Permanent link">&para;</a></h1>
+<p>The right place to start is <a href="https://help.ubnt.com/hc/en-us/articles/220066768-UniFi-How-to-Install-Update-via-APT-on-Debian-or-Ubuntu">UniFi - How to Install &amp; Update via APT on Debian or Ubuntu</a>.</p>
+<p>FYI, It's three link-hops from from the quick-start guide to that page:
+- <a href="https://dl.ubnt.com/guides/UniFi/UniFi_AP-AC-Lite_QSG.pdf">quickstart guide</a>
+- <a href="https://www.ubnt.com/download/unifi/default/default/unifi-5723-controller-debianubuntu-linux">"UniFi 5.7.23 Controller for Debian/Ubuntu Linux"</a>.
+- Ignore the download button on the right hand side, instead open up <a href="https://community.ubnt.com/t5/UniFi-Updates-Blog/UniFi-5-7-23-Stable-has-been-released/ba-p/2318813">the release notes</a>.
+- See the line with a link "HERE": "For Debian/Ubuntu users, please update your APT source see <a href="https://help.ubnt.com/hc/en-us/articles/220066768-UniFi-How-to-Install-Update-via-APT-on-Debian-or-Ubuntu">HERE</a>".</p>
+<h1 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h1>
+<p>It's best to start by installing/confirming the <em>MongoDB</em> version you want to use, and then install Ubiquiti's <em>unifi</em> software.  The reason for that is that <em>unifi</em> will create start running and create a <em>mongo</em> database immediately with whatever <em>MongoDB</em> version is already installed or installs automatically with <em>unifi</em>.  Then, when updating the <em>MongoDB</em> in the next step, that database might be incompatible and you might have to remove it.</p>
+<h2 id="installing-mongodb">Installing MongoDB<a class="headerlink" href="#installing-mongodb" title="Permanent link">&para;</a></h2>
+<p>We are following <a href="https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/">MongoBD instructions which succesfully installed version 3.6.5</a>.</p>
+<p><em>Beware!  Don't use <a href="https://docs.mongodb.com/v3.0/tutorial/install-mongodb-on-ubuntu/">this page</a>, it is out of date!</em></p>
+<div class="codehilite"><pre><span></span><code>sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2930ADAE8CAF5059EE73BB4B58712A2291FA4AD5
+echo &quot;deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.6 multiverse&quot; | sudo tee /etc/apt/sources.list.d/mongodb-org-3.6.list
+sudo apt-get update
+sudo apt-get install -y mongodb-org
+</code></pre></div>
+
+<p>Optionally a specific version can pinned, but we skip that:</p>
+<div class="codehilite"><pre><span></span><code>echo &quot;mongodb-org hold&quot; | sudo dpkg --set-selections
+echo &quot;mongodb-org-server hold&quot; | sudo dpkg --set-selections
+echo &quot;mongodb-org-shell hold&quot; | sudo dpkg --set-selections
+echo &quot;mongodb-org-mongos hold&quot; | sudo dpkg --set-selections
+echo &quot;mongodb-org-tools hold&quot; | sudo dpkg --set-selections
+</code></pre></div>
+
+<p>Start the <em>systemd</em> service <code>mongod</code>.  Note that is is <code>mongod</code> without a <code>b</code> at the end!  Confirm it's status:</p>
+<div class="codehilite"><pre><span></span><code>systemctl start mongod
+systemctl status mongod
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code>● mongod.service - High-performance, schema-free document-oriented database
+   Loaded: loaded (/lib/systemd/system/mongod.service; disabled; vendor preset: enabled)
+   Active: active (running) since Sun 2018-06-10 10:47:09 PDT; 10s ago
+     Docs: https://docs.mongodb.org/manual
+ Main PID: 27814 (mongod)
+    Tasks: 23
+   Memory: 38.9M
+      CPU: 636ms
+   CGroup: /system.slice/mongod.service
+           └─27814 /usr/bin/mongod --config /etc/mongod.conf
+</code></pre></div>
+
+<p>There is compatibility problem between <em>mongodb 3.6</em> and <em>unifi 5.7</em>.  The latter is issues mongo commands that use a flag only found in <em>mongodb 3.4</em>.  It is discussed <a href="https://community.ubnt.com/t5/UniFi-Routing-Switching/MongoDB-3-6/td-p/2195435">here</a>.</p>
+<p>Although it might be possible to use the <a href="https://docs.mongodb.com/manual/reference/command/setFeatureCompatibilityVersion/#setfeaturecompatibilityversion"><em>mongodb setFeatureCompatibilityVersion</em> function</a>, we used a <a href="https://gist.github.com/ammgws/755ea787856497be79719b749cad9b4d">different workaround</a> instead:</p>
+<div class="codehilite"><pre><span></span><code>sudo mv /usr/lib/unifi/bin/mongodb /usr/lib/unifi/bin/mongodb.old
+cat &lt;&lt; _EOF &gt; /usr/lib/unifi/bin/mongodb
+#!/bin/bash
+echo &quot;[ $date ]: ${*}&quot; &gt;&gt; /usr/lib/unifi/logs/mongod-call-args.log
+exec /usr/bin/mongod ${*//--nohttpinterface/}
+_EOF
+chmod 755 /usr/lib/unifi/bin/mongodb
+</code></pre></div>
+
+<p>The line </p>
+<div class="codehilite"><pre><span></span><code>echo &quot;[ $date ]: ${*}&quot; &gt;&gt; /usr/lib/unifi/logs/mongod-call-args.log
+</code></pre></div>
+
+<p>writes the arguments passed by <em>unifi</em> to <em>mongod</em> into a log file for veiwing.</p>
+<p>The line:</p>
+<div class="codehilite"><pre><span></span><code>exec /usr/bin/mongod ${*//--nohttpinterface/}
+</code></pre></div>
+
+<p>removes the offending <em>mongodb 3.6" incompatible argument from the arguments passed by *unifi</em>.</p>
+<h2 id="installing-the-ubiquiti-software">Installing the Ubiquiti software<a class="headerlink" href="#installing-the-ubiquiti-software" title="Permanent link">&para;</a></h2>
+<p><em>WARNING - installing the desired *MongoDB</em> version first is recommended.*</p>
+<p><a href="https://help.ubnt.com/hc/en-us/articles/220066768-UniFi-How-to-Install-Update-via-APT-on-Debian-or-Ubuntu">UniFi - How to Install &amp; Update via APT on Debian or Ubuntu</a></p>
+<div class="codehilite"><pre><span></span><code>echo &#39;deb http://www.ubnt.com/downloads/unifi/debian stable ubiquiti&#39; | sudo tee /etc/apt/sources.list.d/100-ubnt-unifi.list
+sudo wget -O /etc/apt/trusted.gpg.d/unifi-repo.gpg https://dl.ubnt.com/unifi/unifi-repo.gpg 
+sudo apt-get update
+sudo apt-get install unifi
+</code></pre></div>
+
+<h1 id="log-files">Log files<a class="headerlink" href="#log-files" title="Permanent link">&para;</a></h1>
+<ul>
+<li>/usr/lib/unifi/logs/server.log</li>
+<li>/usr/lib/unifi/logs/mongod.log</li>
+</ul>
+<div class="codehilite"><pre><span></span><code>sudo cat /usr/lib/unifi/logs/server.log
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code>[2018-06-10 09:32:36,020] &lt;main&gt; WARN  system - reload system.properties failed: file not found
+[2018-06-10 09:32:36,478] &lt;main&gt; WARN  system - reload system.properties failed: file not found
+[2018-06-10 09:32:37,806] &lt;launcher&gt; INFO  system - *** Running for the first time, creating identity ***
+[2018-06-10 09:32:37,808] &lt;launcher&gt; INFO  system - UUID: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+[2018-06-10 09:32:37,808] &lt;launcher&gt; WARN  system - reload system.properties failed: file not found
+[2018-06-10 09:32:37,810] &lt;launcher&gt; INFO  system - ======================================================================
+[2018-06-10 09:32:37,810] &lt;launcher&gt; INFO  system - UniFi 5.7.23 (build atag_5.7.23_10670 - release) is started
+[2018-06-10 09:32:37,810] &lt;launcher&gt; INFO  system - ======================================================================
+[2018-06-10 09:32:37,818] &lt;launcher&gt; INFO  system - BASE dir:/usr/lib/unifi
+[2018-06-10 09:32:37,832] &lt;launcher&gt; INFO  system - Current System IP: 172.18.0.1
+[2018-06-10 09:32:37,847] &lt;launcher&gt; INFO  system - Hostname: user-desktop
+[2018-06-10 09:32:38,195] &lt;launcher&gt; INFO  system - Valid keystore is missing. Generating one ...
+[2018-06-10 09:32:38,196] &lt;launcher&gt; INFO  system - Generating Certificate[UniFi]... please wait...
+[2018-06-10 09:32:38,930] &lt;launcher&gt; INFO  system - Certificate[UniFi] generated!
+[2018-06-10 09:32:40,224] &lt;launcher&gt; INFO  db     - waiting for db connection...
+[2018-06-10 09:32:40,724] &lt;launcher&gt; INFO  db     - Connecting to mongodb://127.0.0.1:27117
+[2018-06-10 09:32:42,645] &lt;launcher&gt; INFO  db     - Connecting to mongodb://127.0.0.1:27117
+....
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code>sudo cat /usr/lib/unifi/logs/monodb.log
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code>...
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code>systemctl -a | grep unifi
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code>  unifi.service   loaded    active     running         unifi
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code>systemctl -a | grep mongod
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code>  mongod.service  loaded    active     running         High-performance, schema-free document-oriented database
+● mongodb.service masked    inactive   dead            mongodb.service
+</code></pre></div>
+
+<h1 id="make-wifi-unit-and-unifi-talk-to-each-other">Make Wifi unit and Unifi talk to each other<a class="headerlink" href="#make-wifi-unit-and-unifi-talk-to-each-other" title="Permanent link">&para;</a></h1>
+<ol>
+<li>find local lan ip addresses of wifi and PC</li>
+<li>ssh into wifi unit and and tell it the address of the PC to initiate handshake</li>
+<li>open <em>unifi</em> program in PC browser to return handshake with Wifi unit</li>
+<li><strong>again</strong> ssh into wifi unit for final acknowledge of handshake.</li>
+</ol>
+<h2 id="find-local-lan-ip-addresses-of-wifi-and-pc">find local lan ip addresses of wifi and PC<a class="headerlink" href="#find-local-lan-ip-addresses-of-wifi-and-pc" title="Permanent link">&para;</a></h2>
+<p>The Wifi unit, just by being plugged in to the LAN, should have started up and the light should be solid blue.  It will have received an IP address via DHCP.</p>
+<p>Find the ipaddresses of 
+- the Linux PC hosting <em>unifi</em>
+- the Wifi unit.</p>
+<p>Use <code>ifconfig</code> to see the PC address.  Below it follows <code>inet addr:</code></p>
+<div class="codehilite"><pre><span></span><code>ifconfig
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code>enp2s0    Link encap:Ethernet  HWaddr xxxxxxxxxxxxxx  
+          inet addr:192.168.1.69  Bcast:192.168.1.255  Mask:255.255.255.0
+</code></pre></div>
+
+<p>Use <code>nmap</code> to see the Wifi address. <code>nmap -sP</code> will ping all the addresses over a given range, and gather information about the responses.  The range is determined by the <code>Mask:</code> result returned by <code>ifconfig</code> above.  In this example case, the last first 24 bits of the address are masked.  Translating that into CIDR format we get <code>192.168.1.0/24</code>, which is passed to <code>nmap</code>.  As shown below, the Wifi is identifiable by it's name 'Ubiquiti Networks'.</p>
+<div class="codehilite"><pre><span></span><code>sudo nmap -sP 192.168.1.0/24
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code>...
+Nmap scan report for unknownF09FC273B889 (192.168.1.70)
+Host is up (-0.100s latency).
+MAC Address: xx:xx:xx:xx:xx:xx (Ubiquiti Networks)
+...
+</code></pre></div>
+
+<p>In the above example we found:</p>
+<table>
+<thead>
+<tr>
+<th>PC addr</th>
+<th>Wifi Addr</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>192.168.1.68</td>
+<td>192.168.1.70</td>
+</tr>
+</tbody>
+</table>
+<h2 id="ssh-into-wifi-unit-set-pc-address">ssh into wifi unit, set PC address<a class="headerlink" href="#ssh-into-wifi-unit-set-pc-address" title="Permanent link">&para;</a></h2>
+<p><em>ssh</em> into the device as user <em>ubnt</em> with <a href="https://help.ubnt.com/hc/en-us/articles/204909374-UniFi-Default-Username-and-Password">the password shown here</a>. </p>
+<div class="codehilite"><pre><span></span><code>ssh ubnt@192.168.1.70
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code>ubnt@192.168.1.70&#39;s password: ....
+BusyBox v1.19.4 (2016-01-19 22:59:59 PST) built-in shell (ash)
+Enter &#39;help&#39; for a list of built-in commands.
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code>BZ.v3.4.14# help
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code>UniFi Command Line Interface - Ubiquiti Networks
+
+   info                      display device information
+   set-default               restore to factory default
+   set-inform &lt;inform_url&gt;   attempt inform URL (e.g. set-inform http://192.168.0.8:8080/inform)
+   upgrade &lt;firmware_url&gt;    upgrade firmware (e.g. upgrade http://192.168.0.8/unifi_fw.bin)
+   reboot                    reboot the device
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code>BZ.v3.4.14# set-inform http://192.168.1.69:8080/inform
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code>
+</code></pre></div>
+
+<p>As can be seen, in addition to the address of the PC, a port must also be specified.  Ther default is 8080, but if that port is being used for something else on the PC, another port can be shosen.</p>
+<h2 id="open-unifi-program-in-pc-browser-to-return-handshake-with-wifi-unit">open <em>unifi</em> program in PC browser to return handshake with Wifi unit<a class="headerlink" href="#open-unifi-program-in-pc-browser-to-return-handshake-with-wifi-unit" title="Permanent link">&para;</a></h2>
+<p>** firewall **</p>
+<p>The PC might have a firewall blocking communications from the Wifi address.  If <em>ufw</em> is the fireall, then communication from the Wifi can be allowed as follows:</p>
+<div class="codehilite"><pre><span></span><code>sudo ufw allow from 192.168.1.70
+</code></pre></div>
+
+<p>View the rule:</p>
+<div class="codehilite"><pre><span></span><code>sudo ufw status numbered
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code>Status: active
+
+     To                         Action      From
+     --                         ------      ----
+[ 1] Anywhere                   ALLOW IN    192.168.1.70 
+</code></pre></div>
+
+<p><em>NOTE: During normal operation of the Wifi after setup it is not necessary to leave that hole in the firewall open.  It can be closed like this:</em></p>
+<div class="codehilite"><pre><span></span><code>sudo ufw status numbered
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code>...
+[ 1] Anywhere                   ALLOW IN    192.168.1.70 
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code>sudo ufw delete 1
+Deleting:
+ allow from 192.168.1.70
+Proceed with operation (y|n)? y
+Rule deleted
+</code></pre></div>
+
+<p>Enter in browser address bar:</p>
+<div class="codehilite"><pre><span></span><code>https://localhost:8443
+</code></pre></div>
+
+<p>** untrusted certificate 
+The browser will probably refuse to connect because of an untrusted certificate.  Using the <em>advanced</em> options button, enable an exception for that certificate.  Then the setup can continue.</p>
+<p>You should see the unit appear ready to connect. </p>
+<p>Enter a lot of ID's and passwords:</p>
+<ul>
+<li><em>SSID and password</em>: To be used from devices, e.g. smart phones, to connect to the Wifi</li>
+<li><em>admin and password</em>: To log into the <em>unifi</em> program</li>
+<li><em>device authentication and password</em>: To <code>ssh</code> into the Wifi</li>
+</ul>
+<h2 id="again-ssh-into-wifi-unit-and-set-inform"><strong>again</strong> <code>ssh</code> into wifi unit and <code>set-inform</code><a class="headerlink" href="#again-ssh-into-wifi-unit-and-set-inform" title="Permanent link">&para;</a></h2>
+<p>Login with new id/password given for <em>device authentification</em>, and enter the same <code>set-inform</code> command as before.</p>
+<div class="codehilite"><pre><span></span><code>ssh &lt;device-auth-id&gt;@192.168.1.70
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code>&lt;device-auth-id&gt;@192.168.1.70&#39;s password: &lt;device-auth-id password&gt;
+BusyBox v1.19.4 (2016-01-19 22:59:59 PST) built-in shell (ash)
+Enter &#39;help&#39; for a list of built-in commands.
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code>BZ.v3.4.14# set-inform http://192.168.1.69:8080/inform
+</code></pre></div>
+
+<p><strong>End of post</strong></p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        <a href="../set-mkdocs-material/" class="md-footer__link md-footer__link--prev" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Setting up mkdocs-material with latest github version
+            </div>
+          </div>
+        </a>
+      
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2021 Craig Hicks
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../assets/javascripts/workers/search.d351de03.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.a1609d9a.min.js"></script>
+      
+    
+  </body>
+</html>

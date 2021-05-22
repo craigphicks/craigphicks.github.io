@@ -1,0 +1,46 @@
+
+# Setting up mkdocs-material (latest from github)
+
+
+Find the tag of the latest version on `github.com/squidfunk/mkdocs-material`, e.g., `7.1.5`, and make a shallow clone
+
+```
+git clone --branch 7.1.5 --depth 1 https://github.com/squidfunk/mkdocs-material.git
+```
+
+Enter that directory
+
+```
+cd ~/github/mkdocs-material
+```
+
+
+Setup local environment directory (abitrarily named `.venv` here).
+```
+python3 -m venv .venv
+```
+
+Activate it
+```
+source .venv/bin/activate
+```
+and the prompt will change
+```
+(.venv) %
+```
+
+Use pip to install the necessary python modules
+```
+pip3 install -r requirements.txt
+```
+
+You'll probably get some error messages but do it again and it will tell everything is OK.
+
+Build it
+
+```
+python3 -m venv .venv
+```
+
+
+

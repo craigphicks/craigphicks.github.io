@@ -1,0 +1,381 @@
+---
+title: Setting up Ubiquiti Wifi (UAP-AC-Lite) on Linux Ubuntu 16.04 
+tags:
+  - Wifi
+  - Linux
+  - Ubuntu
+  - Ubiquiti
+  - UAP-AC-Lite
+categories:
+  - Wifi
+toc: true
+comments: true
+date: 2018-06-10 00:00:00
+layout: true
+---
+
+# Summary
+
+
+installing the Unifi controller on Ubuntu 16.04.
+It will be used to control the Ubiquiti wifi model: UAP-AC-LITE
+
+
+
+<!-- more -->
+
+# *Caution*: Post Setup note on possible insecurity
+
+NOTE: After logging out of *unifi* at the browser level, I later found a nest of *unifi* processes still running, and blocking other processes from using port 8080.  I also found [this post](https://community.ubnt.com/t5/UniFi-Feature-Requests/Linux-Unifi-Controller-default-Debian-setup-is-grossly-insecure/idi-p/1752863/page/2) claiming *unifi* setup on linux is very insecure.  Indeed, some of hte *unifi* processes are running as *root*.
+
+Show *unifi* processes
+
+```none in/out
+ps -aux | grep unifi
+root     28116  0.0  0.0  17072    12 ?        Ss   Jun10   0:00 unifi -cwd /usr/lib/unifi -home /us
+root     28117  0.0  0.0  17072    20 ?        S    Jun10   0:00 unifi -cwd /usr/lib/unifi -home /us
+unifi    28119  0.0  0.6 3343864 53068 ?       Sl   Jun10   1:12 unifi -cwd /usr/lib/unifi -home /us
+unifi    28135  0.1  5.7 4442860 461816 ?      Sl   Jun10   3:16 /usr/lib/jvm/java-8-openjdk-amd64/j
+unifi    28968  0.1  0.9 1045124 78456 ?       Sl   Jun10   5:08 /usr/bin/mongod --dbpath /usr/lib/u
+```
+
+Report the status of the *systemd* *unifi* service
+
+```none in/out
+sudo systemctl status unifi
+● unifi.service - unifi
+   Loaded: loaded (/lib/systemd/system/unifi.service; enabled; vendor preset: enabled)
+   Active: active (running) since Sun 2018-06-10 19:01:40 PDT; 2 days ago
+  Process: 27877 ExecStop=/usr/lib/unifi/bin/unifi.init stop (code=exited, status=0/SUCCESS)
+  Process: 28057 ExecStart=/usr/lib/unifi/bin/unifi.init start (code=exited, status=0/SUCCESS)
+ Main PID: 28116 (jsvc)
+    Tasks: 910
+   Memory: 653.6M
+      CPU: 9min 38.339s
+   CGroup: /system.slice/unifi.service
+           ├─28116 unifi -cwd /usr/lib/unifi -home /usr/lib/jvm/java-8-openjdk-amd64 -cp /usr/share/           ├─28117 unifi -cwd /usr/lib/unifi -home /usr/lib/jvm/java-8-openjdk-amd64 -cp /usr/share/           ├─28119 unifi -cwd /usr/lib/unifi -home /usr/lib/jvm/java-8-openjdk-amd64 -cp /usr/share/           ├─28135 /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java -Xmx1024M -XX:ErrorFile=/usr/lib/u           └─28968 /usr/bin/mongod --dbpath /usr/lib/unifi/data/db --port 27117 --unixSocketPrefix /
+Jun 10 19:01:39 user-desktop systemd[1]: Starting unifi...
+Jun 10 19:01:39 user-desktop unifi.init[28057]:  * Starting Ubiquiti UniFi Controller unifi
+Jun 10 19:01:40 user-desktop unifi.init[28057]:    ...done.
+Jun 10 19:01:40 user-desktop systemd[1]: Started unifi.
+```
+
+Stop the *unifi* service:
+
+```none in/out
+sudo systemctl stop unifi
+ps -aux | grep unifi
+<empty result>
+```
+
+So stopping the *unifi* service has temporarily solved the problem.  Of course the *unifi* browser program will not run, but that doesn't affect the operation of the wifi once it has been set up.
+
+
+# Getting to the correct URL
+
+The right place to start is [UniFi - How to Install & Update via APT on Debian or Ubuntu](https://help.ubnt.com/hc/en-us/articles/220066768-UniFi-How-to-Install-Update-via-APT-on-Debian-or-Ubuntu).
+
+
+FYI, It's three link-hops from from the quick-start guide to that page:
+- [quickstart guide](https://dl.ubnt.com/guides/UniFi/UniFi_AP-AC-Lite_QSG.pdf)
+- ["UniFi 5.7.23 Controller for Debian/Ubuntu Linux"](https://www.ubnt.com/download/unifi/default/default/unifi-5723-controller-debianubuntu-linux).
+- Ignore the download button on the right hand side, instead open up [the release notes](https://community.ubnt.com/t5/UniFi-Updates-Blog/UniFi-5-7-23-Stable-has-been-released/ba-p/2318813).
+- See the line with a link "HERE": "For Debian/Ubuntu users, please update your APT source see [HERE](https://help.ubnt.com/hc/en-us/articles/220066768-UniFi-How-to-Install-Update-via-APT-on-Debian-or-Ubuntu)".
+
+# Installation
+
+It's best to start by installing/confirming the *MongoDB* version you want to use, and then install Ubiquiti's *unifi* software.  The reason for that is that *unifi* will create start running and create a *mongo* database immediately with whatever *MongoDB* version is already installed or installs automatically with *unifi*.  Then, when updating the *MongoDB* in the next step, that database might be incompatible and you might have to remove it.
+
+
+## Installing MongoDB
+
+We are following [MongoBD instructions which succesfully installed version 3.6.5](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/).
+
+*Beware!  Don't use [this page](https://docs.mongodb.com/v3.0/tutorial/install-mongodb-on-ubuntu/), it is out of date!*
+
+```none input
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2930ADAE8CAF5059EE73BB4B58712A2291FA4AD5
+echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.6 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.6.list
+sudo apt-get update
+sudo apt-get install -y mongodb-org
+```
+
+Optionally a specific version can pinned, but we skip that:
+
+```none "input (skipped)"
+echo "mongodb-org hold" | sudo dpkg --set-selections
+echo "mongodb-org-server hold" | sudo dpkg --set-selections
+echo "mongodb-org-shell hold" | sudo dpkg --set-selections
+echo "mongodb-org-mongos hold" | sudo dpkg --set-selections
+echo "mongodb-org-tools hold" | sudo dpkg --set-selections
+```
+
+Start the *systemd* service `mongod`.  Note that is is `mongod` without a `b` at the end!  Confirm it's status:
+
+
+```none input
+systemctl start mongod
+systemctl status mongod
+```
+```none output
+● mongod.service - High-performance, schema-free document-oriented database
+   Loaded: loaded (/lib/systemd/system/mongod.service; disabled; vendor preset: enabled)
+   Active: active (running) since Sun 2018-06-10 10:47:09 PDT; 10s ago
+     Docs: https://docs.mongodb.org/manual
+ Main PID: 27814 (mongod)
+    Tasks: 23
+   Memory: 38.9M
+      CPU: 636ms
+   CGroup: /system.slice/mongod.service
+           └─27814 /usr/bin/mongod --config /etc/mongod.conf
+```
+
+There is compatibility problem between *mongodb 3.6* and *unifi 5.7*.  The latter is issues mongo commands that use a flag only found in *mongodb 3.4*.  It is discussed [here](https://community.ubnt.com/t5/UniFi-Routing-Switching/MongoDB-3-6/td-p/2195435).
+
+Although it might be possible to use the [*mongodb setFeatureCompatibilityVersion* function](https://docs.mongodb.com/manual/reference/command/setFeatureCompatibilityVersion/#setfeaturecompatibilityversion), we used a [different workaround](https://gist.github.com/ammgws/755ea787856497be79719b749cad9b4d) instead:
+
+```none input
+sudo mv /usr/lib/unifi/bin/mongodb /usr/lib/unifi/bin/mongodb.old
+cat << _EOF > /usr/lib/unifi/bin/mongodb
+#!/bin/bash
+echo "[ $date ]: ${*}" >> /usr/lib/unifi/logs/mongod-call-args.log
+exec /usr/bin/mongod ${*//--nohttpinterface/}
+_EOF
+chmod 755 /usr/lib/unifi/bin/mongodb
+```
+
+The line 
+```
+echo "[ $date ]: ${*}" >> /usr/lib/unifi/logs/mongod-call-args.log
+```
+writes the arguments passed by *unifi* to *mongod* into a log file for veiwing.
+
+The line:
+```
+exec /usr/bin/mongod ${*//--nohttpinterface/}
+```
+removes the offending *mongodb 3.6" incompatible argument from the arguments passed by *unifi*.
+
+
+
+## Installing the Ubiquiti software
+
+*WARNING - installing the desired *MongoDB* version first is recommended.*
+
+ [UniFi - How to Install & Update via APT on Debian or Ubuntu](https://help.ubnt.com/hc/en-us/articles/220066768-UniFi-How-to-Install-Update-via-APT-on-Debian-or-Ubuntu)
+
+```none input
+echo 'deb http://www.ubnt.com/downloads/unifi/debian stable ubiquiti' | sudo tee /etc/apt/sources.list.d/100-ubnt-unifi.list
+sudo wget -O /etc/apt/trusted.gpg.d/unifi-repo.gpg https://dl.ubnt.com/unifi/unifi-repo.gpg 
+sudo apt-get update
+sudo apt-get install unifi
+```
+
+# Log files
+
+
+- /usr/lib/unifi/logs/server.log
+- /usr/lib/unifi/logs/mongod.log
+
+```none input
+sudo cat /usr/lib/unifi/logs/server.log
+```
+```none output
+[2018-06-10 09:32:36,020] <main> WARN  system - reload system.properties failed: file not found
+[2018-06-10 09:32:36,478] <main> WARN  system - reload system.properties failed: file not found
+[2018-06-10 09:32:37,806] <launcher> INFO  system - *** Running for the first time, creating identity ***
+[2018-06-10 09:32:37,808] <launcher> INFO  system - UUID: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+[2018-06-10 09:32:37,808] <launcher> WARN  system - reload system.properties failed: file not found
+[2018-06-10 09:32:37,810] <launcher> INFO  system - ======================================================================
+[2018-06-10 09:32:37,810] <launcher> INFO  system - UniFi 5.7.23 (build atag_5.7.23_10670 - release) is started
+[2018-06-10 09:32:37,810] <launcher> INFO  system - ======================================================================
+[2018-06-10 09:32:37,818] <launcher> INFO  system - BASE dir:/usr/lib/unifi
+[2018-06-10 09:32:37,832] <launcher> INFO  system - Current System IP: 172.18.0.1
+[2018-06-10 09:32:37,847] <launcher> INFO  system - Hostname: user-desktop
+[2018-06-10 09:32:38,195] <launcher> INFO  system - Valid keystore is missing. Generating one ...
+[2018-06-10 09:32:38,196] <launcher> INFO  system - Generating Certificate[UniFi]... please wait...
+[2018-06-10 09:32:38,930] <launcher> INFO  system - Certificate[UniFi] generated!
+[2018-06-10 09:32:40,224] <launcher> INFO  db     - waiting for db connection...
+[2018-06-10 09:32:40,724] <launcher> INFO  db     - Connecting to mongodb://127.0.0.1:27117
+[2018-06-10 09:32:42,645] <launcher> INFO  db     - Connecting to mongodb://127.0.0.1:27117
+....
+```
+
+```none input
+sudo cat /usr/lib/unifi/logs/monodb.log
+```
+```none output
+...
+```
+
+```none input
+systemctl -a | grep unifi
+```
+```none output
+  unifi.service   loaded    active     running         unifi
+```
+
+```none input
+systemctl -a | grep mongod
+```
+```none output
+  mongod.service  loaded    active     running         High-performance, schema-free document-oriented database
+● mongodb.service masked    inactive   dead            mongodb.service
+```
+
+# Make Wifi unit and Unifi talk to each other 
+
+1. find local lan ip addresses of wifi and PC
+1. ssh into wifi unit and and tell it the address of the PC to initiate handshake
+1. open *unifi* program in PC browser to return handshake with Wifi unit
+1. **again** ssh into wifi unit for final acknowledge of handshake.
+
+
+## find local lan ip addresses of wifi and PC
+
+The Wifi unit, just by being plugged in to the LAN, should have started up and the light should be solid blue.  It will have received an IP address via DHCP.
+
+Find the ipaddresses of 
+- the Linux PC hosting *unifi*
+- the Wifi unit.
+
+Use `ifconfig` to see the PC address.  Below it follows `inet addr:`
+
+```none input
+ifconfig
+```
+```none output
+enp2s0    Link encap:Ethernet  HWaddr xxxxxxxxxxxxxx  
+          inet addr:192.168.1.69  Bcast:192.168.1.255  Mask:255.255.255.0
+```
+
+Use `nmap` to see the Wifi address. `nmap -sP` will ping all the addresses over a given range, and gather information about the responses.  The range is determined by the `Mask:` result returned by `ifconfig` above.  In this example case, the last first 24 bits of the address are masked.  Translating that into CIDR format we get `192.168.1.0/24`, which is passed to `nmap`.  As shown below, the Wifi is identifiable by it's name 'Ubiquiti Networks'.
+
+```none input
+sudo nmap -sP 192.168.1.0/24
+```
+```none output
+...
+Nmap scan report for unknownF09FC273B889 (192.168.1.70)
+Host is up (-0.100s latency).
+MAC Address: xx:xx:xx:xx:xx:xx (Ubiquiti Networks)
+...
+```
+
+In the above example we found:
+
+PC addr | Wifi Addr
+---     |---
+192.168.1.68 | 192.168.1.70
+
+
+## ssh into wifi unit, set PC address 
+
+*ssh* into the device as user *ubnt* with [the password shown here](https://help.ubnt.com/hc/en-us/articles/204909374-UniFi-Default-Username-and-Password). 
+
+```none input
+ssh ubnt@192.168.1.70
+```
+```none output
+ubnt@192.168.1.70's password: ....
+BusyBox v1.19.4 (2016-01-19 22:59:59 PST) built-in shell (ash)
+Enter 'help' for a list of built-in commands.
+```
+```none input
+BZ.v3.4.14# help
+```
+```none output
+UniFi Command Line Interface - Ubiquiti Networks
+
+   info                      display device information
+   set-default               restore to factory default
+   set-inform <inform_url>   attempt inform URL (e.g. set-inform http://192.168.0.8:8080/inform)
+   upgrade <firmware_url>    upgrade firmware (e.g. upgrade http://192.168.0.8/unifi_fw.bin)
+   reboot                    reboot the device
+```
+```none input
+BZ.v3.4.14# set-inform http://192.168.1.69:8080/inform
+```
+```none output
+```
+
+As can be seen, in addition to the address of the PC, a port must also be specified.  Ther default is 8080, but if that port is being used for something else on the PC, another port can be shosen.
+
+
+## open *unifi* program in PC browser to return handshake with Wifi unit
+
+** firewall **
+
+The PC might have a firewall blocking communications from the Wifi address.  If *ufw* is the fireall, then communication from the Wifi can be allowed as follows:
+
+```none input
+sudo ufw allow from 192.168.1.70
+```
+
+View the rule:
+
+```none input
+sudo ufw status numbered
+```
+```none output
+Status: active
+
+     To                         Action      From
+     --                         ------      ----
+[ 1] Anywhere                   ALLOW IN    192.168.1.70 
+```
+
+*NOTE: During normal operation of the Wifi after setup it is not necessary to leave that hole in the firewall open.  It can be closed like this:*
+
+```none input
+sudo ufw status numbered
+```
+```none output
+...
+[ 1] Anywhere                   ALLOW IN    192.168.1.70 
+```
+```none input/output
+sudo ufw delete 1
+Deleting:
+ allow from 192.168.1.70
+Proceed with operation (y|n)? y
+Rule deleted
+```
+
+Enter in browser address bar:
+
+```none address
+https://localhost:8443
+```
+
+** untrusted certificate 
+The browser will probably refuse to connect because of an untrusted certificate.  Using the *advanced* options button, enable an exception for that certificate.  Then the setup can continue.
+
+You should see the unit appear ready to connect. 
+
+Enter a lot of ID's and passwords:
+
+- *SSID and password*: To be used from devices, e.g. smart phones, to connect to the Wifi
+- *admin and password*: To log into the *unifi* program
+- *device authentication and password*: To `ssh` into the Wifi
+
+
+
+## **again** `ssh` into wifi unit and `set-inform`
+
+Login with new id/password given for *device authentification*, and enter the same `set-inform` command as before.
+
+
+```none input
+ssh <device-auth-id>@192.168.1.70
+```
+```none output
+<device-auth-id>@192.168.1.70's password: <device-auth-id password>
+BusyBox v1.19.4 (2016-01-19 22:59:59 PST) built-in shell (ash)
+Enter 'help' for a list of built-in commands.
+```
+```none input
+BZ.v3.4.14# set-inform http://192.168.1.69:8080/inform
+```
+
+**End of post**
