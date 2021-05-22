@@ -566,6 +566,46 @@ module.exports = {
 <p>webpack.config.dev.js</p>
 <div class="codehilite"><pre><span></span><code>NOT YET TESTED
 </code></pre></div>
+
+<p>src/index.ts</p>
+<div class="codehilite"><pre><span></span><code>import * as _ from &#39;lodash&#39;;
+
+function component(s:string) {
+  const element = document.createElement(&#39;div&#39;);
+
+  element.innerHTML = s; //_.join([&#39;Hello&#39;, &#39;foopack&#39;], &#39; &#39;);
+
+  return element;
+}
+
+async function main(){
+  document.body.appendChild(component(_.join([&#39;Hello&#39;, &#39;foopack&#39;],&#39; &#39;)));
+  const data = await fetch(&#39;/api&#39;)
+  .then(response =&gt; response.text())
+  //.then(data =&gt; console.log(data));
+  console.log(data)
+  document.body.appendChild(component(data));
+}
+main()
+</code></pre></div>
+
+<p>dest-dev/index.html (hard coded for now)</p>
+<div class="codehilite"><pre><span></span><code>&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot; /&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;script
+      type=&quot;text/javascript&quot;
+      charset=&quot;utf-8&quot;
+      src=&quot;/bundle.js&quot;
+    &gt;&lt;/script&gt;
+    &lt;div&gt;1&lt;/div&gt;
+    &lt;div&gt;2&lt;/div&gt;
+    &lt;div&gt;3&lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre></div>
                 
               
               
