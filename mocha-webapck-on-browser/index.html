@@ -488,20 +488,26 @@
                 <h2 id="running-mocha-tests-with-webpack-in-browser">Running Mocha Tests with Webpack in Browser<a class="headerlink" href="#running-mocha-tests-with-webpack-in-browser" title="Permanent link">&para;</a></h2>
 <h1 id="intro">Intro<a class="headerlink" href="#intro" title="Permanent link">&para;</a></h1>
 <p>This document describes running mocha tests in the browser, using webpack to bundle.</p>
-<p>There are two seperate cases:</p>
+<p>Working repo on github:
+https://github.com/craigphicks/mocha-webpack-template</p>
+<p>By Mode:</p>
 <ol>
 <li>Production mode</li>
 <li>Served using express</li>
 <li>Development mode</li>
 <li>Served using webpacks own internal development browser, and not using express.</li>
 </ol>
-<p>Step by step 
-- Production mode 
-  - using a single test file
-  - using a multiple test files
-  - using a multiple test files and node dependencies
-    - tree pruning vs tree shaking
-- Development mode</p>
+<p>Step by step:</p>
+<ul>
+<li>Production mode </li>
+<li>using a single test file</li>
+<li>using a multiple test files</li>
+<li>using a multiple test files and node dependencies<ul>
+<li>tree pruning vs tree shaking</li>
+</ul>
+</li>
+<li>Development mode</li>
+</ul>
 <h1 id="directories">Directories<a class="headerlink" href="#directories" title="Permanent link">&para;</a></h1>
 <div class="codehilite"><pre><span></span><code>top
  |-api
