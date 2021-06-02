@@ -887,10 +887,11 @@ and <code>_.join(...)</code> to <code>join(...)</code>.  </p>
 -rw-rw-r-- 1 craig craig 772 Jun  1 16:49 ../static/index.js
 </code></pre></div>
 
-<p>This manualy pruning limits the bundle size.  However, we don't do that, because tree shaking is less work for the programmer.</p>
+<p>This manualy pruning limits the bundle size.  </p>
+<p>However, in the case of <code>lodash</code> we won't do that, because tree shaking is possible.</p>
 <h2 id="tree-shaking-automatic-to-reduce-size">Tree shaking (automatic) to reduce size<a class="headerlink" href="#tree-shaking-automatic-to-reduce-size" title="Permanent link">&para;</a></h2>
 <p>Webpack has the ability to tree-shake, but it only works with es-modules,
-so older libraries (such as <code>lodash</code>) not written as es-modules fail tree shaking.  </p>
+so libraries (such as <code>lodash</code>) not written as es-modules fail tree shaking.  </p>
 <p>Fortunately there is an <code>lodash-es</code> version of <code>lodash</code>, written in ES6 format.
 We replace <code>lodash</code> with <code>lodash-es</code></p>
 <div class="codehilite"><pre><span></span><code>npm i lodash-es &amp;&amp; npm i -D @types/lodash-es
@@ -987,6 +988,12 @@ module.exports = (env) =&gt; {
 }
 </code></pre></div>
 
+<p>Notice in the script <code>build-dev</code> we see <code>... &amp;&amp; tsc &amp;&amp; ( tsc -w &amp; ) &amp;&amp; ...</code>.
+This is executing <code>tsc</code> once to completion, then running it again in watch mode in the background,
+so that any changes are immediately retranspiled into new <code>.js</code> files.  <code>webpack serve ...</code> ensures
+those <code>.js</code> files are being watched to build a new bundle <code>../static/index.js</code> when the <code>.js</code> files change.</p>
+<p><em>Note: webpack has software to allow going directly from <code>.ts</code> files to bundle, but this document takes a 
+more basic approach for the sake of transparency.</em></p>
 <h2 id="run-in-production-mode">Run in production mode<a class="headerlink" href="#run-in-production-mode" title="Permanent link">&para;</a></h2>
 <h3 id="build-the-page-to-serve">Build the page to serve<a class="headerlink" href="#build-the-page-to-serve" title="Permanent link">&para;</a></h3>
 <p>In one window change to <code>top/app</code></p>
