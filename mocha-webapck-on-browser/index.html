@@ -73,7 +73,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#running-mocha-tests-with-webpack-in-browser" class="md-skip">
+        <a href="#running-mocha-tests-with-webpack-in-a-browser" class="md-skip">
           Skip to content
         </a>
       
@@ -268,8 +268,8 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#running-mocha-tests-with-webpack-in-browser" class="md-nav__link">
-    Running Mocha Tests with Webpack in Browser
+  <a href="#running-mocha-tests-with-webpack-in-a-browser" class="md-nav__link">
+    Running Mocha Tests with Webpack in a Browser
   </a>
   
 </li>
@@ -282,58 +282,117 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#directories" class="md-nav__link">
-    Directories
+  <a href="#directory-structure-and-setting-files" class="md-nav__link">
+    Directory Structure and Setting Files
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#server-file" class="md-nav__link">
-    Server File
+  <a href="#using-a-single-test-file" class="md-nav__link">
+     Using a Single Test File
+  </a>
+  
+    <nav class="md-nav" aria-label=" Using a Single Test File">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#express-server" class="md-nav__link">
+    Express server
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#application-test-side" class="md-nav__link">
+    Application-Test side
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#multiple-interdependent-test-files" class="md-nav__link">
+    Multiple Interdependent Test Files
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#html-file" class="md-nav__link">
-    HTML File
+  <a href="#node-dependency-tree-shaking-vs-tree-pruning" class="md-nav__link">
+     Node dependency, tree shaking vs tree pruning
   </a>
+  
+    <nav class="md-nav" aria-label=" Node dependency, tree shaking vs tree pruning">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tree-pruning-manual-to-reduce-size" class="md-nav__link">
+    Tree pruning (manual) to reduce size
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tree-shaking-automatic-to-reduce-size" class="md-nav__link">
+    Tree shaking (automatic) to reduce size
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#single-test-file" class="md-nav__link">
-    Single Test File
+  <a href="#adding-development-mode-hot-module-update-and-webpack-server" class="md-nav__link">
+    Adding Development mode - hot module update and webpack server
+  </a>
+  
+    <nav class="md-nav" aria-label="Adding Development mode - hot module update and webpack server">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#run-in-production-mode" class="md-nav__link">
+    Run in production mode
+  </a>
+  
+    <nav class="md-nav" aria-label="Run in production mode">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#build-the-page-to-serve" class="md-nav__link">
+    Build the page to serve
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#settings" class="md-nav__link">
-    Settings
+        
+          <li class="md-nav__item">
+  <a href="#open-the-server" class="md-nav__link">
+    Open the server
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#multiple-test-files" class="md-nav__link">
-    Multiple Test Files
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-in-development-mode" class="md-nav__link">
+    Run in development mode
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#lodash-dependency-and-tree-shaking-vs-tree-pruning" class="md-nav__link">
-    Lodash dependency and tree shaking vs tree pruning
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#development-mode-hot-module-update-and-webpack-server" class="md-nav__link">
-    Development mode - hot module update and webpack server
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -399,8 +458,8 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#running-mocha-tests-with-webpack-in-browser" class="md-nav__link">
-    Running Mocha Tests with Webpack in Browser
+  <a href="#running-mocha-tests-with-webpack-in-a-browser" class="md-nav__link">
+    Running Mocha Tests with Webpack in a Browser
   </a>
   
 </li>
@@ -413,58 +472,117 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#directories" class="md-nav__link">
-    Directories
+  <a href="#directory-structure-and-setting-files" class="md-nav__link">
+    Directory Structure and Setting Files
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#server-file" class="md-nav__link">
-    Server File
+  <a href="#using-a-single-test-file" class="md-nav__link">
+     Using a Single Test File
+  </a>
+  
+    <nav class="md-nav" aria-label=" Using a Single Test File">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#express-server" class="md-nav__link">
+    Express server
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#application-test-side" class="md-nav__link">
+    Application-Test side
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#multiple-interdependent-test-files" class="md-nav__link">
+    Multiple Interdependent Test Files
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#html-file" class="md-nav__link">
-    HTML File
+  <a href="#node-dependency-tree-shaking-vs-tree-pruning" class="md-nav__link">
+     Node dependency, tree shaking vs tree pruning
   </a>
+  
+    <nav class="md-nav" aria-label=" Node dependency, tree shaking vs tree pruning">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tree-pruning-manual-to-reduce-size" class="md-nav__link">
+    Tree pruning (manual) to reduce size
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tree-shaking-automatic-to-reduce-size" class="md-nav__link">
+    Tree shaking (automatic) to reduce size
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#single-test-file" class="md-nav__link">
-    Single Test File
+  <a href="#adding-development-mode-hot-module-update-and-webpack-server" class="md-nav__link">
+    Adding Development mode - hot module update and webpack server
+  </a>
+  
+    <nav class="md-nav" aria-label="Adding Development mode - hot module update and webpack server">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#run-in-production-mode" class="md-nav__link">
+    Run in production mode
+  </a>
+  
+    <nav class="md-nav" aria-label="Run in production mode">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#build-the-page-to-serve" class="md-nav__link">
+    Build the page to serve
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#settings" class="md-nav__link">
-    Settings
+        
+          <li class="md-nav__item">
+  <a href="#open-the-server" class="md-nav__link">
+    Open the server
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#multiple-test-files" class="md-nav__link">
-    Multiple Test Files
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-in-development-mode" class="md-nav__link">
+    Run in development mode
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#lodash-dependency-and-tree-shaking-vs-tree-pruning" class="md-nav__link">
-    Lodash dependency and tree shaking vs tree pruning
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#development-mode-hot-module-update-and-webpack-server" class="md-nav__link">
-    Development mode - hot module update and webpack server
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -485,48 +603,54 @@
                   </a>
                 
                 
-                <h2 id="running-mocha-tests-with-webpack-in-browser">Running Mocha Tests with Webpack in Browser<a class="headerlink" href="#running-mocha-tests-with-webpack-in-browser" title="Permanent link">&para;</a></h2>
+                <h2 id="running-mocha-tests-with-webpack-in-a-browser">Running Mocha Tests with Webpack in a Browser<a class="headerlink" href="#running-mocha-tests-with-webpack-in-a-browser" title="Permanent link">&para;</a></h2>
+<p>June, 2021, craigphicks </p>
 <h1 id="intro">Intro<a class="headerlink" href="#intro" title="Permanent link">&para;</a></h1>
-<p>This document describes running mocha tests in the browser, using webpack to bundle.</p>
-<p>Working repo on github:
-https://github.com/craigphicks/mocha-webpack-template</p>
-<p>By Mode:</p>
-<ol>
-<li>Production mode</li>
-<li>Served using express</li>
-<li>Development mode</li>
-<li>Served using webpacks own internal development browser, and not using express.</li>
-</ol>
-<p>Step by step:</p>
-<ul>
-<li>Production mode </li>
-<li>using a single test file</li>
-<li>using a multiple test files</li>
-<li>using a multiple test files and node dependencies<ul>
-<li>tree pruning vs tree shaking</li>
-</ul>
-</li>
-<li>Development mode</li>
-</ul>
-<h1 id="directories">Directories<a class="headerlink" href="#directories" title="Permanent link">&para;</a></h1>
+<p>This document describes simple setup for running mocha tests in the browser, using webpack to bundle.  </p>
+<p>The complete final settings, with both production and development modes integrated, are described in the <a href="#FINALSETUP">last section of this document</a>.
+There is a <a href="https://github.com/craigphicks/mocha-webpack-template">corresponding repo on github</a>.</p>
+<p>The intermediate sections of this document show step by step development of the settings adding one feature at a time.  The intermediate sections only use webpack production mode.  For webpack production mode, a minimal Express server is used to serve the HTML.  Only the in <a href="#FINALSETUP">last section</a> is webpack development mode introduced.  Webpack development mode uses an integrated Webpack server - so the Express is not used in that case. </p>
+<p>Section <a href="#directory-structure">Directory Structure and setting files</a> describes the directory structure and setting files used for all cases.</p>
+<p>Section <a href="#SINGLETEST">Using a Single Test File</a> describes settings required for a single self contained mocha test file. Webpack is not required here.</p>
+<p>Section <a href="#multiple-files">Multiple Interdependent Test Files</a> describes settings required when 
+using multiple test files which are interdependent, e.g.. one includes another using import.  For this case, webpack is required.</p>
+<p>Section <a href="#node-dependency">Node dependency, tree shaking vs tree pruning</a> describes settings required when a node library, 
+in this example <code>lodash</code>, is imported, but we only want the bundle to include the part(s) of the library we use.</p>
+<p>In section <a href="#FINALSETUP">Adding Development mode - hot module update and webpack server</a> we enable webpack development mode for the first time.  The express server wont be used in development mode because webpack has it's own integrated server for development mode, and that enables <em>hot swapping</em> - which enable auto re-building on source change, so the results are viewable very quickly in the browser.  </p>
+<h1 id="directory-structure-and-setting-files"><a name=directory-structure/>Directory Structure and Setting Files<a class="headerlink" href="#directory-structure-and-setting-files" title="Permanent link">&para;</a></h1>
 <div class="codehilite"><pre><span></span><code>top
  |-api
    |-server.ts 
  |-app
-   |-resources
+   |-resources // permanent files to be copied
      |-favicon.ico
      |-index.html
-   |-test-in-ts
+   |-test-in-js // tsc produced js files
+     |-index.js
+     |-(test.js)
+   |-test-in-ts // test source files
      |-index.ts
-     ...
+     |-(test.ts) // when multiple test files are used 
    |-package.json
    |-tsconfig.json
    |-webpack.mocha.js
- |-static  // will receive resource files and compiled test files
+ |-static  // distributed files for serving
+   |-favicon.ico
+   |-index.html
+   |-index.js // webpack output bundle file
 </code></pre></div>
 
-<h1 id="server-file">Server File<a class="headerlink" href="#server-file" title="Permanent link">&para;</a></h1>
-<p><strong>server.ts</strong></p>
+<p>The typescript transpiler <code>tsc</code> transpiles the <code>.ts</code> source file(s) in <code>top/app/test-in-ts</code>
+to create the same root name<code>.js</code> file(s) in <code>top/app/test-in-js</code>.</p>
+<p>The webpack program bundles the <code>.js</code> files in <code>top/app/test-in-js</code>, as well as any node dependencies if they exist,
+into the single bundle file <code>top/static/index.js</code>.</p>
+<p>The files in <code>top/static/index.js</code> will be served by either the Express server (in production mode),
+or the webpack integrated server (in development mode).</p>
+<p><em>Note: Webpack has associated auxilliary software to go directly from <code>.ts</code> files to the bundled package,
+but this document chooses a more basic approach - aiming for transparency.</em></p>
+<h1 id="using-a-single-test-file"><a name=SINGLETEST/> Using a Single Test File<a class="headerlink" href="#using-a-single-test-file" title="Permanent link">&para;</a></h1>
+<h2 id="express-server">Express server<a class="headerlink" href="#express-server" title="Permanent link">&para;</a></h2>
+<p><strong>api/server.ts</strong></p>
 <div class="codehilite"><pre><span></span><code>mport express from &#39;express&#39;;
 const port = 3080
 
@@ -539,9 +663,19 @@ app.listen(port, &#39;127.0.0.1&#39;, () =&gt; {
 })
 </code></pre></div>
 
-<p>How to compile this express server not covered here.</p>
-<h1 id="html-file">HTML File<a class="headerlink" href="#html-file" title="Permanent link">&para;</a></h1>
-<p><strong>index.html</strong></p>
+<p>The code is available in <a href="https://github.com/craigphicks/mocha-webpack-template">the repository</a> in the api directory.</p>
+<p>To run change dir to <code>top/api</code> and execute</p>
+<div class="codehilite"><pre><span></span><code>.../api% npm run serve
+</code></pre></div>
+
+<p>or </p>
+<div class="codehilite"><pre><span></span><code>.../api% ts-node server.ts
+</code></pre></div>
+
+<p>Assuming the expected files are available in <code>top/static</code>, it will show you the server URL  http://localhost:3080
+which you can load in a browser.</p>
+<h2 id="application-test-side">Application-Test side<a class="headerlink" href="#application-test-side" title="Permanent link">&para;</a></h2>
+<p><strong>app/resource/index.html</strong></p>
 <div class="codehilite"><pre><span></span><code>&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
   &lt;head&gt;
@@ -552,10 +686,7 @@ app.listen(port, &#39;127.0.0.1&#39;, () =&gt; {
   &lt;/head&gt;
   &lt;body&gt;
     &lt;div id=&quot;mocha&quot;&gt;&lt;/div&gt;
-
-    &lt;!-- &lt;script src=&quot;https://unpkg.com/chai/chai.js&quot;&gt;&lt;/script&gt; --&gt;
     &lt;script src=&quot;https://unpkg.com/mocha/mocha.js&quot;&gt;&lt;/script&gt;
-
     &lt;script class=&quot;mocha-init&quot;&gt;
       mocha.setup({ui:&#39;bdd&#39;,bail:true});
       mocha.checkLeaks();
@@ -568,8 +699,9 @@ app.listen(port, &#39;127.0.0.1&#39;, () =&gt; {
 &lt;/html&gt;
 </code></pre></div>
 
-<h1 id="single-test-file">Single Test File<a class="headerlink" href="#single-test-file" title="Permanent link">&para;</a></h1>
-<p><strong>index.ts</strong></p>
+<p>This file follows very closely to the one suggested in <a href="https://mochajs.org/#running-mocha-in-the-browser">this mocha documentation</a>.
+The only change is adding the <code>mocha.setup</code> parameter <code>bail:true</code>.  This tells mocha to quit on the first error.</p>
+<p><strong>app/test-in-ts/index.ts</strong></p>
 <div class="codehilite"><pre><span></span><code>export function test(){
   describe(&#39;test&#39;, () =&gt; {
     it(&#39;1/3 passes &#39;, () =&gt; {
@@ -586,7 +718,7 @@ app.listen(port, &#39;127.0.0.1&#39;, () =&gt; {
 test()
 </code></pre></div>
 
-<h1 id="settings">Settings<a class="headerlink" href="#settings" title="Permanent link">&para;</a></h1>
+<p>Because the mocha <code>bail:true</code> parameter is set, test 3/3 will never be reached.</p>
 <p><strong>package.json</strong></p>
 <div class="codehilite"><pre><span></span><code>{
   &quot;name&quot;: &quot;app2&quot;,
@@ -595,7 +727,7 @@ test()
   &quot;scripts&quot;: {
     &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;,
     &quot;copy-resources&quot;: &quot;mkdir -p ../static &amp;&amp; cp  ./resources/* ../static&quot;,
-    &quot;build&quot;: &quot;npm run copy-resources &amp;&amp; tsc &amp;&amp; webpack --config ./webpack.mocha.js&quot;,
+    &quot;build&quot;: &quot;npm run copy-resources &amp;&amp; tsc &amp;&amp; cp ./test-in-js/index.js ../static&quot;,
     &quot;clean&quot;: &quot;rm -rf ../static &amp;&amp; rm -rf test-in-js&quot;
   },
   &quot;keywords&quot;: [],
@@ -619,6 +751,15 @@ test()
 }
 </code></pre></div>
 
+<p>Note the <code>build</code> script in <code>package.json</code>.
+The typescript transpiler <code>tsc</code> is called,
+and the single file of output <code>index.js</code> is copied directly to <code>static</code>.
+Webpack can be skipped because there is only file <code>index.js</code> and it is suitable 
+recent browsers which can handle es-modules.</p>
+<p>The script must be run from the <code>top/app</code> directory:</p>
+<div class="codehilite"><pre><span></span><code>.../app % npm run build
+</code></pre></div>
+
 <p><strong>tsconfig.json</strong></p>
 <div class="codehilite"><pre><span></span><code>{
   &quot;compilerOptions&quot;: {
@@ -637,13 +778,15 @@ test()
 }
 </code></pre></div>
 
+<h1 id="multiple-interdependent-test-files"><a name=multiple-files/>Multiple Interdependent Test Files<a class="headerlink" href="#multiple-interdependent-test-files" title="Permanent link">&para;</a></h1>
+<p>When multiple test files, where at least one imports another, are used,
+they must be bundled into one file using a bundler such as Webpack.</p>
 <p><strong>webpack.mocha.js</strong></p>
 <div class="codehilite"><pre><span></span><code>const path = require(&#39;path&#39;)
 
 module.exports = {
   mode: &quot;production&quot;,
   entry: [&quot;./test-in-js&quot;],
-  //watch: true,
   output:{
     filename:&#39;index.js&#39;,
     path: path.resolve(__dirname, &#39;../static&#39;),
@@ -651,8 +794,6 @@ module.exports = {
 };
 </code></pre></div>
 
-<h1 id="multiple-test-files">Multiple Test Files<a class="headerlink" href="#multiple-test-files" title="Permanent link">&para;</a></h1>
-<p>Must be bundled into one file using a bundler such as Webpack.</p>
 <p><strong>index.ts</strong></p>
 <div class="codehilite"><pre><span></span><code>import {test} from &#39;./test&#39;
 let b = true;
@@ -677,12 +818,40 @@ export function test(b:boolean){
 }
 </code></pre></div>
 
-<p>From the <code>app</code> directory </p>
-<div class="codehilite"><pre><span></span><code>npx run clean &amp;&amp; npx run build
+<p>The file <code>index.ts</code> imports <code>test.ts</code>.  With that condition we cannot simply load multiple files each with their own script tags.</p>
+<p><strong>package.json</strong></p>
+<div class="codehilite"><pre><span></span><code>{
+  &quot;name&quot;: &quot;app2&quot;,
+  &quot;version&quot;: &quot;1.0.0&quot;,
+  &quot;main&quot;: &quot;src/index.ts&quot;,
+  &quot;scripts&quot;: {
+    &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;,
+    &quot;copy-resources&quot;: &quot;mkdir -p ../static &amp;&amp; cp  ./resources/* ../static&quot;,
+    &quot;build&quot;: &quot;npm run copy-resources &amp;&amp; tsc &amp;&amp; webpack --config ./webpack.mocha.js&quot;,
+    &quot;clean&quot;: &quot;rm -rf ../static &amp;&amp; rm -rf test-in-js&quot;
+  },
+  &quot;keywords&quot;: [],
+  &quot;author&quot;: &quot;craigphicks&quot;,
+  &quot;license&quot;: &quot;ISC&quot;,
+  &quot;description&quot;: &quot;&quot;,
+  &quot;devDependencies&quot;: {
+    &quot;@types/lodash&quot;: &quot;^4.14.170&quot;,
+    &quot;@types/mocha&quot;: &quot;^8.2.2&quot;,
+    &quot;mocha&quot;: &quot;^8.4.0&quot;,
+    &quot;ts-loader&quot;: &quot;^9.2.1&quot;,
+    &quot;typescript&quot;: &quot;^4.2.4&quot;,
+    &quot;webpack&quot;: &quot;^5.37.1&quot;,
+    &quot;webpack-cli&quot;: &quot;^4.7.0&quot;,
+    &quot;webpack-dev-server&quot;: &quot;^3.11.2&quot;,
+    &quot;webpack-node-externals&quot;: &quot;^3.0.0&quot;
+  },
+  &quot;dependencies&quot;: {
+    &quot;lodash&quot;: &quot;^4.17.21&quot;
+  }
+}
 </code></pre></div>
 
-<p>Assuming the express server is running visit <code>http://localhost:3080</code></p>
-<h1 id="lodash-dependency-and-tree-shaking-vs-tree-pruning">Lodash dependency and tree shaking vs tree pruning<a class="headerlink" href="#lodash-dependency-and-tree-shaking-vs-tree-pruning" title="Permanent link">&para;</a></h1>
+<h1 id="node-dependency-tree-shaking-vs-tree-pruning"><a name=node-dependency/> Node dependency, tree shaking vs tree pruning<a class="headerlink" href="#node-dependency-tree-shaking-vs-tree-pruning" title="Permanent link">&para;</a></h1>
 <p><strong>test.js</strong></p>
 <div class="codehilite"><pre><span></span><code>import * as _ from &#39;lodash&#39;;
 function throwIfNot(b:boolean){if (!b) throw new Error(&#39;fail &#39;);}
@@ -705,90 +874,48 @@ export function test(b:boolean){
 }
 </code></pre></div>
 
-<p>The output is big - 77k.</p>
+<p>The output is big - 77k, because the whole lodash lib is included in the bundle, even though 
+only <code>join</code> is used.</p>
 <div class="codehilite"><pre><span></span><code>$ ls -al ../static/index.js
 -rw-rw-r-- 1 craig craig 71105 Jun  1 15:47 ../static/index.js
 </code></pre></div>
 
-<p>Also, the browser shows some unexpected test results:</p>
-<div class="codehilite"><pre><span></span><code>test
-    1/4 passes
-    1/4 passes
-    Error: global leak(s) detected: &#39;_&#39;
-</code></pre></div>
-
-<p>That's not a typo, <code>1/4 passes</code> occurs twice followed by the global leak message.</p>
-<p>We remove the global leaks declaration from <code>index.html</code>,
-and worry about it later.</p>
-<p><strong>index.html</strong></p>
-<div class="codehilite"><pre><span></span><code>&lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;en&quot;&gt;
-  &lt;head&gt;
-    &lt;meta charset=&quot;utf-8&quot; /&gt;
-    &lt;title&gt;Mocha Tests&lt;/title&gt;
-    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;
-    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://unpkg.com/mocha/mocha.css&quot; /&gt;
-  &lt;/head&gt;
-  &lt;body&gt;
-    &lt;div id=&quot;mocha&quot;&gt;&lt;/div&gt;
-    &lt;script src=&quot;https://unpkg.com/mocha/mocha.js&quot;&gt;&lt;/script&gt;
-    &lt;script class=&quot;mocha-init&quot;&gt;
-      mocha.setup({ui:&#39;bdd&#39;,bail:true});
-      //mocha.checkLeaks();  REMOVED
-    &lt;/script&gt;
-    &lt;script type=&#39;module&#39; src=&quot;index.js&quot;&gt;&lt;/script&gt;
-    &lt;script class=&quot;mocha-exec&quot;&gt;
-      mocha.run();
-    &lt;/script&gt;
-  &lt;/body&gt;
-&lt;/html&gt;
-</code></pre></div>
-
-<p>then build again.</p>
-<p>About the big 77k size.  </p>
-<p>As per https://webpack.js.org/guides/tree-shaking/ </p>
-<div class="codehilite"><pre><span></span><code>{
-  sideEffect:false
-}
-</code></pre></div>
-
-<p>is added to <code>package.json</code>, but it makes no difference to the size (yet).</p>
-<p>In <code>test.js</code> change <code>inport * as _ from 'lodash'</code> to <code>import {join} from 'lodash</code>.<br />
-However, this still does not help.</p>
-<p>Instead try <code>import join from 'lodash/join'</code>  Success!  It works.</p>
+<h2 id="tree-pruning-manual-to-reduce-size">Tree pruning (manual) to reduce size<a class="headerlink" href="#tree-pruning-manual-to-reduce-size" title="Permanent link">&para;</a></h2>
+<p>In <code>test.js</code> change <code>import * as _ from 'lodash'</code> to <code>import join from 'lodash/join</code>,
+and <code>_.join(...)</code> to <code>join(...)</code>.  </p>
 <div class="codehilite"><pre><span></span><code>$ ls -al ../static/index.js
 -rw-rw-r-- 1 craig craig 772 Jun  1 16:49 ../static/index.js
 </code></pre></div>
 
-<p><strong>test.js</strong></p>
-<div class="codehilite"><pre><span></span><code>import join from &#39;lodash/join&#39;
-function throwIfNot(b: boolean) {
-  if (!b) throw new Error(&#39;fail &#39;);
-}
-export function test(b: boolean) {
-  describe(&#39;test&#39;, () =&gt; {
-    it(&#39;1/4 passes &#39;, () =&gt; {
-      throwIfNot(true);
-    });
-    it(&#39;2/4 passes&#39;, () =&gt; {
-      const s = join([&#39;1&#39;, &#39;2&#39;], &#39;&#39;);
-      console.log(s);
-      throwIfNot(s === &#39;12&#39;);
-    });
-    it(&#39;3/3 ???&#39;, () =&gt; {
-      throwIfNot(b);
-    });
-    it(&#39;3/4 passes&#39;, () =&gt; {
-      throwIfNot(true);
-    });
-  });
-}
+<p>This manualy pruning limits the bundle size.  However, we don't do that, because tree shaking is less work for the programmer.</p>
+<h2 id="tree-shaking-automatic-to-reduce-size">Tree shaking (automatic) to reduce size<a class="headerlink" href="#tree-shaking-automatic-to-reduce-size" title="Permanent link">&para;</a></h2>
+<p>Webpack has the ability to tree-shake, but it only works with es-modules,
+so older libraries (such as <code>lodash</code>) not written as es-modules fail tree shaking.  </p>
+<p>Fortunately there is an <code>lodash-es</code> version of <code>lodash</code>, written in ES6 format.
+We replace <code>lodash</code> with <code>lodash-es</code></p>
+<div class="codehilite"><pre><span></span><code>npm i lodash-es &amp;&amp; npm i -D @types/lodash-es
+npm uninstall lodash @types/lodash
 </code></pre></div>
 
-<p>Apparently <code>lodash-es</code> is just <code>lodash</code> in ES6 format, 
-which should allow tree-shaking rather than manual tree-pruning.
-However, using <code>lodash-es</code> seems no difference - manual pruning is still required.</p>
-<h1 id="development-mode-hot-module-update-and-webpack-server">Development mode - hot module update and webpack server<a class="headerlink" href="#development-mode-hot-module-update-and-webpack-server" title="Permanent link">&para;</a></h1>
+<p>and change the import line in <code>test.ts</code> from </p>
+<div class="codehilite"><pre><span></span><code>import * as _ from &#39;lodash&#39;
+</code></pre></div>
+
+<p>to </p>
+<div class="codehilite"><pre><span></span><code>import * as _ from &#39;lodash-es&#39;
+</code></pre></div>
+
+<p>Then build</p>
+<div class="codehilite"><pre><span></span><code>npm run build
+</code></pre></div>
+
+<p>and check the size</p>
+<div class="codehilite"><pre><span></span><code>.../app$ ls -al ../static/index.js
+-rw-rw-r-- 1 craig craig 351 Jun  2 07:47 ../static/index.js
+</code></pre></div>
+
+<p>The size is small, tree-shaking is working. </p>
+<h1 id="adding-development-mode-hot-module-update-and-webpack-server"><a name=FINALSETUP/>Adding Development mode - hot module update and webpack server<a class="headerlink" href="#adding-development-mode-hot-module-update-and-webpack-server" title="Permanent link">&para;</a></h1>
 <p>Hot module update enables the browser content to be updated automatically
 as a result of changing any source file, including any typescript test file.</p>
 <p>Webpack offers it own built in HTML server for this, so we won't be using express.  </p>
@@ -829,9 +956,7 @@ module.exports = (env) =&gt; {
 </code></pre></div>
 
 <p><code>package.json</code></p>
-<div class="codehilite"><pre><span></span><code>{
-  &quot;name&quot;: &quot;app2&quot;,
-  &quot;sideEffects&quot;:false,
+<div class="codehilite"><pre><span></span><code>  &quot;name&quot;: &quot;app2&quot;,
   &quot;version&quot;: &quot;1.0.0&quot;,
   &quot;main&quot;: &quot;src/index.ts&quot;,
   &quot;scripts&quot;: {
@@ -842,11 +967,11 @@ module.exports = (env) =&gt; {
     &quot;clean&quot;: &quot;rm -rf ../static &amp;&amp; rm -rf test-in-js&quot;
   },
   &quot;keywords&quot;: [],
-  &quot;author&quot;: &quot;&quot;,
+  &quot;author&quot;: &quot;craigphicks&quot;,
   &quot;license&quot;: &quot;ISC&quot;,
   &quot;description&quot;: &quot;&quot;,
   &quot;devDependencies&quot;: {
-    &quot;@types/lodash&quot;: &quot;^4.14.170&quot;,
+    &quot;@types/lodash-es&quot;: &quot;^4.17.4&quot;,
     &quot;@types/mocha&quot;: &quot;^8.2.2&quot;,
     &quot;mocha&quot;: &quot;^8.4.0&quot;,
     &quot;ts-loader&quot;: &quot;^9.2.1&quot;,
@@ -862,33 +987,30 @@ module.exports = (env) =&gt; {
 }
 </code></pre></div>
 
-<p>For whatever reason the <code>mocha.checkleaks</code> command in <code>index.html</code> no longer seems to trigger an error so we put it back</p>
-<p>index.html</p>
-<div class="codehilite"><pre><span></span><code>&lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;en&quot;&gt;
-  &lt;head&gt;
-    &lt;meta charset=&quot;utf-8&quot; /&gt;
-    &lt;title&gt;Mocha Tests&lt;/title&gt;
-    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;
-    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://unpkg.com/mocha/mocha.css&quot; /&gt;
-  &lt;/head&gt;
-  &lt;body&gt;
-    &lt;div id=&quot;mocha&quot;&gt;&lt;/div&gt;
-
-    &lt;!-- &lt;script src=&quot;https://unpkg.com/chai/chai.js&quot;&gt;&lt;/script&gt; --&gt;
-    &lt;script src=&quot;https://unpkg.com/mocha/mocha.js&quot;&gt;&lt;/script&gt;
-
-    &lt;script class=&quot;mocha-init&quot;&gt;
-      mocha.setup({ui:&#39;bdd&#39;,bail:true});
-      mocha.checkLeaks();
-    &lt;/script&gt;
-    &lt;script type=&#39;module&#39; src=&quot;index.js&quot;&gt;&lt;/script&gt;
-    &lt;script class=&quot;mocha-exec&quot;&gt;
-      mocha.run();
-    &lt;/script&gt;
-  &lt;/body&gt;
-&lt;/html&gt;
+<h2 id="run-in-production-mode">Run in production mode<a class="headerlink" href="#run-in-production-mode" title="Permanent link">&para;</a></h2>
+<h3 id="build-the-page-to-serve">Build the page to serve<a class="headerlink" href="#build-the-page-to-serve" title="Permanent link">&para;</a></h3>
+<p>In one window change to <code>top/app</code></p>
+<div class="codehilite"><pre><span></span><code>.../app% npm run build
 </code></pre></div>
+
+<h3 id="open-the-server">Open the server<a class="headerlink" href="#open-the-server" title="Permanent link">&para;</a></h3>
+<p>In another window change dir to <code>top/api</code></p>
+<div class="codehilite"><pre><span></span><code>.../api% npm run serve
+</code></pre></div>
+
+<p>or </p>
+<div class="codehilite"><pre><span></span><code>.../api% ts-node server.ts
+</code></pre></div>
+
+<p>It will show you the server URL  http://localhost:3080
+which you can load in a browser.</p>
+<h2 id="run-in-development-mode">Run in development mode<a class="headerlink" href="#run-in-development-mode" title="Permanent link">&para;</a></h2>
+<p>Change to <code>top/app</code></p>
+<div class="codehilite"><pre><span></span><code>.../app% npm run build-dev
+</code></pre></div>
+
+<p>It will show you the server URL  http://localhost:3080
+which you can load in a browser.</p>
                 
               
               
